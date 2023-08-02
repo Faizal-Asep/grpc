@@ -1,0 +1,20 @@
+syntax = "proto3";
+package pb;
+option go_package = "./pb";
+
+message Request{}
+
+message Response{
+    message Data{
+        string access_token = 1;
+        string refresh_token = 2;
+    }
+    int32 code = 1;
+    string message =2;
+    Data data = 3;
+
+}
+
+service Service {
+    rpc Ping(Request)returns(Response){}
+}
